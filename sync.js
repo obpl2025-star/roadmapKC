@@ -14,7 +14,8 @@
         name = (prompt("Введите фамилию и имя (увидит наставник)") || "").trim();
         try { localStorage.setItem("full_name", name); } catch (e) {}
       }
-      return u;
+      return sb.from("profiles").upsert({ user_id: u.id, full_name: name, last_seen: new Date().toISOString() })
+        .then(function () { return u; }, function () { return u; });
     });
     return ready;
   }
