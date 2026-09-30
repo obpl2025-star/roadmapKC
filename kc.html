@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Роадмап стажировки КЦ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eef1f4;--ink:#14263a;--mut:#5b6b7b;--card:#fff;--line:#b9c4cf;--pan:#fff;
+--c1:#0e8a7d;--c2:#2f6fdb;--c3:#7a4fd6;--c4:#d9822b;--c5:#cf3f4f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1822;--ink:#e8eef4;--mut:#93a3b3;--card:#182533;--line:#3a4b5c;--pan:#1a2a3a}}
+:root[data-theme="dark"]{--bg:#0f1822;--ink:#e8eef4;--mut:#93a3b3;--card:#182533;--line:#3a4b5c;--pan:#1a2a3a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Onest,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+header{padding:28px 24px 8px;max-width:1500px;margin:0 auto}
+h1{margin:0 0 6px;font-size:28px;font-weight:700;letter-spacing:-.01em}
+header p{margin:0;color:var(--mut);max-width:60ch}
+.bar{display:flex;align-items:center;gap:12px;margin-top:16px;max-width:420px}
+.track{flex:1;height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.fill{height:100%;width:0;background:var(--c1);transition:width .3s}
+.bar span{font-size:13px;color:var(--mut);white-space:nowrap}
+.board{display:flex;gap:0;padding:20px 24px 60px;max-width:1500px;margin:0 auto;overflow-x:auto;align-items:flex-start}
+.day{flex:0 0 250px;position:relative;padding-right:34px}
+.day:not(:last-child):after{content:"";position:absolute;top:26px;right:4px;width:30px;border-top:2px dashed var(--line)}
+.day:not(:last-child):before{content:"";position:absolute;top:20px;right:2px;border:6px solid transparent;border-left:8px solid var(--line);border-right:0}
+.dh{background:var(--a);color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;font-size:16px}
+.dh small{display:block;font-weight:500;opacity:.9;font-size:12px}
+.flow{list-style:none;margin:0;padding:0}
+.flow li{position:relative;padding-top:18px}
+.flow li:before{content:"";position:absolute;left:24px;top:0;height:18px;border-left:2px solid var(--line)}
+.flow li:after{content:"";position:absolute;left:19px;top:11px;border:5px solid transparent;border-top:7px solid var(--line);border-bottom:0}
+.b{width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-left:5px solid var(--a);border-radius:8px;padding:9px 12px;cursor:pointer;display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
+.b:hover{border-color:var(--a)}
+.b:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+.b.on{background:var(--a);color:#fff;border-color:var(--a)}
+.b.done .t:after{content:" ✓";color:var(--a);font-weight:700}
+.b.on.done .t:after{color:#fff}
+.t{font-weight:500;font-size:14px;line-height:1.35}
+#ov{position:fixed;inset:0;background:rgba(10,20,30,.4);display:none;z-index:5}
+#ov.show{display:block}
+#p{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--pan);color:var(--ink);z-index:6;padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px));overflow-y:auto;transform:translateX(105%);transition:transform .25s;box-shadow:-8px 0 30px rgba(0,0,0,.2);border-top:6px solid var(--a)}
+#p.show{transform:none}
+#p .dn{font-size:13px;color:var(--a);font-weight:600}
+#p h2{margin:4px 0 12px;font-size:22px;line-height:1.25}
+#p p{margin:0 0 12px;max-width:60ch}
+#p ul{margin:0 0 14px;padding-left:20px}
+#p li{margin-bottom:6px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btns button{font:inherit;font-weight:600;border-radius:8px;padding:9px 16px;cursor:pointer;border:1.5px solid var(--a);background:var(--a);color:#fff}
+.btns button.g{background:transparent;color:var(--ink);border-color:var(--line)}
+.btns button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+@media (max-width:760px){.board{flex-direction:column;overflow:visible;padding:16px}.day{flex:none;width:100%;padding:0 0 26px}
+.day:not(:last-child):after{top:auto;bottom:4px;right:auto;left:24px;width:0;height:20px;border-top:0;border-left:2px dashed var(--line)}
+.day:not(:last-child):before{top:auto;bottom:0;right:auto;left:18px;border:7px solid transparent;border-top:8px solid var(--line);border-bottom:0}
+h1{font-size:23px}}
+@media (prefers-reduced-motion:reduce){#p,.fill{transition:none}}
+</style>
+</head>
+<body>
+<header>
+<h1>Роадмап стажировки контакт-центра</h1>
+<p>Пять дней, с понедельника по пятницу, с 9:00 до 17:00. Нажмите на блок, чтобы прочитать краткое описание. Отмечайте изученное.</p>
+<div class="bar"><div class="track"><div class="fill" id="fill"></div></div><span id="cnt"></span></div>
+</header>
+<main class="board" id="board"></main>
+<div id="ov"></div>
+<aside id="p" role="dialog" aria-modal="true" aria-labelledby="pt"></aside>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="sync.js"></script>
+<script>
+var D=[
+{n:"День 1",s:"Знакомство и база",c:"--c1",b:[
+["Знакомство и план стажировки","Стажировка идёт с понедельника по пятницу, с 9:00 до 17:00. В пятницу — финальное тестирование из 30 вопросов. Также проходит встреча с руководителем по заработной плате."],
+["Структура компании","Контакт-центр делится на подразделения:",["Sales — доводит клиента до открытия займа и выдаёт займы","Support — помогает с вопросами (звонки), при необходимости работает на выдачу","Chats — то же самое в чате","Sales ночь и Chats ночь — те же функции в ночную смену"]],
+["Сайт и личный кабинет","Схема регистрации: паспортные данные, адрес, фото паспорта, способ получения. Разбираем способы обмена и оплаты займа. В ЛК вкладки: Мои кошельки, Мои займы, DigiБонус, Приведи друга."],
+["Юридическая информация","Номер горячей линии: 8 800 700 6595. Юр. адрес: 123112, г. Москва, Пресненская наб., д. 2, помещ. 54п/2. Директор — Степанова Нина Валерьевна."],
+["Криптовалюта и USDT","USDT — цифровой аналог доллара США, приравнивается к его курсу. P2P — сервис обмена USDT на RUB и обратно. Сеть отправки — способ передачи криптовалюты; компания использует TRC20."],
+["Криптокошельки и Тронскан","Криптокошелёк — ячейка хранения криптовалюты. Горячий — привязан и верифицирован биржей. Холодный — устройство для хранения. Тронскан — сервис проверки хеша транзакций."],
+["Критерии получения займа","Паспорт и гражданство РФ, возраст от 18 до 55 лет."],
+["Слова-табу","Заменяем слова при общении с клиентом:",["кредит → займ","сумма → количество, долг","в рублях → в эквиваленте рубля","деньги → активы, средства"]],
+["Аббревиатуры","КЦ — Контакт-центр, ВЗ — Взыскание, ПР — пролонгация, РР — реструктуризация, ГЛ — горячая линия, ТЛ — тимлид, ДЛ — доверенное лицо. Users — этапы работы с клиентом без заявки, application — с заявкой."]
+]},
+{n:"День 2",s:"Тарифы и акции",c:"--c2",b:[
+["Тарифы","Условия займа для клиента: начисление процентов, максимальная сумма, максимальный срок подачи заявки и доступность (каким клиентам тариф доступен)."],
+["Промокоды","Скидка на процентные начисления. Пример: проценты 100 USDT, промо NEW75 — проценты с промокодом 25 USDT."],
+["Продажа тарифов","Техники продажи тарифов клиенту."],
+["Отдел обучения","Руководитель — Сафонов Олег. Тренеры КЦ — Бамова Екатерина и Славинский Валерий."],
+["Способы обмена (ЛК)","Чтобы обменять USDT в RUB: Мои кошельки → «Вывести на карту» → указать номер карты, ФИО получателя и название банка."],
+["Способы оплаты займа","Оплата банковской картой или криптокошельком.",["Мои займы → «Оплатить»","Карта: ввести сумму, перевести в своём банке по реквизитам с сайта","Криптокошелёк: ввести сумму, перевести на кошелёк с сайта по сети USDT TRC20"]],
+["DigiБонус","Акция: при своевременном закрытии займа клиент получает обратно до 5% от оплаченного как кешбек."],
+["Приведи друга","Клиент отправляет другу реферальную ссылку. Друг регистрируется, подаёт заявку и вовремя закрывает займ — клиент получает 50 USDT."],
+["Сорри-бонусы","Способ извиниться за неудобства по вине компании.",["7 USDT — 1 раз, если займ открыт","Если займа нет — промокод: 50% (1-е обращение), 75% (2-е), 99% (3-е)"]]
+]},
+{n:"День 3",s:"Support и взыскание",c:"--c3",b:[
+["Идентификация","Проводится, когда клиент звонит на входящую линию. Уточняем ФИО и дату рождения."],
+["Верификация: 3 вида","Нужна, чтобы убедиться, что общаемся с клиентом.",["Короткая — доработка по смене криптокошелька: ФИО, дата рождения, контрольный вопрос","Короткая + длинная — смена номера без открытого займа, блокировка/разблокировка ЛК. Дополнительно 3 вопроса: знак зодиака, место работы, место проживания","Усложнённая — смена номера с открытым займом, консультация по договору с нефинансового номера"]],
+["Направление Support","Подразделение КЦ: принимает входящие звонки и помогает клиентам, при необходимости работает на этапе акцепта."],
+["Чек-лист Support","Макет диалога с клиентом на входящей линии."],
+["Пролонгация","Продление срока договора. Пример: договор на 30 дней, клиент оплачивает услугу — срок становится 37 дней без выхода на просрочку."],
+["Лояльный период","То же самое, что пролонгация, но на срок 3 дня."],
+["Инари","Внутренняя CRM-система компании."],
+["Преколлекшн","Этап взыскания: клиент приближается к окончанию срока договора."],
+["Просрочка","Этап взыскания: клиент нарушил условия договора — превысил срок пользования."],
+["Передача клиентов просрочки","Если клиент с просрочкой (или без неё, с -3 по 0 день) обращается на ГЛ, сотрудник КЦ обязан передать его сотруднику взыскания."],
+["Перекредитация","Закрытие текущего займа со скидкой при условии, что клиент сразу берёт новый.",["Кнопка «Скидка» → согласие с условиями","Заявка на новый займ","Оплата займа со скидкой","Подписание нового договора","Получение нового займа"]],
+["Добор","Возможность получить дополнительные USDT при открытом займе. Пример: взят займ на 100 USDT, можно добрать ещё 50 USDT."]
+]},
+{n:"День 4",s:"Chats, Sales, этапы заявки",c:"--c4",b:[
+["Юридическая база","Основные статьи для отработки возражений."],
+["Договор и его пункты","Изучение актуального договора займа и основных пунктов."],
+["Мотивация","Способ подтолкнуть клиента к нужному этапу. Два типа: промо и начисления USDT."],
+["Направление Chats","Консультация и помощь клиентам в чате поддержки. Сотрудники Chats ночь при необходимости работают на этапах выдачи."],
+["Направление Sales","Главная задача — добиться подачи заявки и перевести клиента на акцепт (подписание договора). Также работают с доработкой."],
+["Нормы Sales","",["Первый звонок не позже 5 минут после начала смены","Не более 2 часов разрывов за смену","Посещение тренингов и выполнение домашних заданий","Норма в диалоге — 2:30 ч","Качественных коммуникаций — 80 шт","Опросники перед сменой","2 попытки набора в 1 коммуникации","Отработка минимум 20 лидов"]],
+["Регистрация","Алгоритм: кнопка «Регистрация» → телефон, имя, серия и номер паспорта, согласие на обработку данных → «Зарегистрироваться» → код из СМС → ФИО, пол, дата рождения, паспорт, адрес, работа → селфи с паспортом → способ получения (карта или криптокошелёк) → условия займа (тариф, сумма, срок, промокод) → подача заявки → контрольный вопрос."],
+["Чек-лист Регистрации","Макет диалога на этапах регистрации, доработки и акцепта."],
+["ЦД: Регистрация","После коммуникации менеджер обязан поставить Мульти-ЦД:",["Этап: первичная регистрация / вход в ЛК","Источник: звонок / мессенджер","Результат: нет ответа / не актуально / договорённость + время / перезвон"]],
+["Доработка","Виды: смена криптокошелька, другое, лайвнесс, видеоверификация, уточнить подачу. Есть отдельный чек-лист диалога."],
+["ЦД: Доработка","Мульти-ЦД: этап «Доработка», источник (звонок / мессенджер), результат (нет ответа / не актуально / договорённость + время / перезвон)."],
+["Акцепт","Менеджер общается с клиентом для подписания займа — это последний этап перед получением. Обязательно предложить максимальную сумму по СППР и срок 30 дней."],
+["ЦД: Акцепт","Мульти-ЦД: этап «Акцепт договора», источник (звонок / мессенджер), результат (нет ответа / не актуально / договорённость + время / перезвон)."],
+["Работа с возражениями","Список отработки возражений клиентов."]
+]},
+{n:"День 5",s:"Риски и финальный тест",c:"--c5",b:[
+["Мошенничество: триггеры","Голос не соответствует возрасту или полу клиента, либо на фоне слышны подсказки."],
+["Работа с жертвой мошенников","",["Успокоить клиента, показать, что поможем разобраться","Внимательно выслушать, уточнить детали","Напомнить: компания не работает с партнёрами, франшизами и проводниками; личные данные третьим лицам не передавать","Передать клиента в рабочий чат «Мошенники»","НЕ ОБЕЩАТЬ КОМПЕНСАЦИЮ!"]],
+["Работа с мессенджерами","Ведётся в эмуляторах LD и Dolphin Anty."],
+["Финальное тестирование","30 вопросов по всем темам недели."]
+]}
+];
+var sel=null,done={},total=0,last=null;
+var ROADMAP="kc";try{done=JSON.parse(localStorage.getItem("kc_done")||"{}")}catch(e){}
+if(window.Sync)Sync.load(ROADMAP).then(function(m){if(m){done=m;upd()}});
+var board=document.getElementById("board"),P=document.getElementById("p"),OV=document.getElementById("ov");
+function esc(s){return s.replace(/[&<>]/g,function(m){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[m]})}
+D.forEach(function(d,i){
+ var col=document.createElement("section");col.className="day";col.style.setProperty("--a","var("+d.c+")");
+ var h='<div class="dh">'+d.n+'<small>'+d.s+'</small></div><ol class="flow">';
+ d.b.forEach(function(b,j){total++;var id=i+"-"+j;
+  h+='<li><button class="b" data-id="'+id+'"><span class="t">'+esc(b[0])+'</span></button></li>'});
+ col.innerHTML=h+'</ol>';board.appendChild(col)});
+function find(id){var a=id.split("-");return{d:D[a[0]],b:D[a[0]].b[a[1]]}}
+function upd(){
+ var n=0;document.querySelectorAll(".b").forEach(function(el){var k=el.dataset.id;el.classList.toggle("done",!!done[k]);if(done[k])n++;el.classList.toggle("on",k===sel)});
+ document.getElementById("fill").style.width=(n/total*100)+"%";
+ document.getElementById("cnt").textContent="Изучено "+n+" из "+total}
+function open(id,el){
+ sel=id;last=el;var r=find(id),b=r.b;
+ P.style.setProperty("--a","var("+r.d.c+")");
+ var h='<div class="dn">'+r.d.n+' · '+r.d.s+'</div><h2 id="pt">'+esc(b[0])+'</h2>';
+ if(b[1])h+='<p>'+esc(b[1])+'</p>';
+ if(b[2])h+='<ul>'+b[2].map(function(x){return'<li>'+esc(x)+'</li>'}).join("")+'</ul>';
+ h+='<div class="btns"><button id="dn">'+(done[id]?"Снять отметку":"Отметить изученным")+'</button><button class="g" id="cl">Закрыть</button></div>';
+ P.innerHTML=h;P.classList.add("show");OV.classList.add("show");upd();
+ document.getElementById("cl").onclick=close;
+ document.getElementById("dn").onclick=function(){
+  if(done[id])delete done[id];else done[id]=1;
+  try{localStorage.setItem("kc_done",JSON.stringify(done))}catch(e){}
+  if(window.Sync)Sync.save(ROADMAP,id,!!done[id]);
+  open(id,last)};
+ document.getElementById("cl").focus()}
+function close(){sel=null;P.classList.remove("show");OV.classList.remove("show");upd();if(last)last.focus()}
+board.addEventListener("click",function(e){var el=e.target.closest(".b");if(el)open(el.dataset.id,el)});
+OV.onclick=close;
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&sel)close()});
+upd();
+</script>
+</body>
+</html>
